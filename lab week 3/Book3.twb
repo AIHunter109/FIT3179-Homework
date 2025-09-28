@@ -1,0 +1,528 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20252.25.0514.2217                               -->
+<workbook original-version='18.1' source-build='2025.2.0 (20252.25.0514.2217)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <_.fcp.VConnDownstreamExtractsWithWarnings.true...VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='transactions+ (camera_store_sales)' inline='true' name='federated.0f6pfvl1x5feee19vuynj1fx6oyf' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='camera_store_sales' name='excel-direct.1h2msel0uhy9jq17gavqr1oxfgfh'>
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='C:/Users/ASUS/Downloads/Part A Tableau activity/camera_store_sales.xlsx' interpretationMode='0' password='' server='' validate='no' />
+          </named-connection>
+        </named-connections>
+        <relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='AND'>
+              <expression op='='>
+                <expression op='[transactions].[trans_id]' />
+                <expression op='[transaction_detail].[trans_id]' />
+              </expression>
+              <expression op='='>
+                <expression op='[transactions].[store]' />
+                <expression op='[transaction_detail].[store]' />
+              </expression>
+            </expression>
+          </clause>
+          <relation connection='excel-direct.1h2msel0uhy9jq17gavqr1oxfgfh' name='transactions' table='[transactions$]' type='table'>
+            <columns gridOrigin='A1:C6:no:A1:C6:0' header='yes' outcome='6'>
+              <column datatype='string' name='store' ordinal='0' />
+              <column datatype='integer' name='trans_id' ordinal='1' />
+              <column datatype='integer' name='customer_id' ordinal='2' />
+            </columns>
+          </relation>
+          <relation connection='excel-direct.1h2msel0uhy9jq17gavqr1oxfgfh' name='transaction_detail' table='[transaction_detail$]' type='table'>
+            <columns gridOrigin='A1:D7:no:A1:D7:0' header='yes' outcome='6'>
+              <column datatype='string' name='store' ordinal='0' />
+              <column datatype='integer' name='trans_id' ordinal='1' />
+              <column datatype='string' name='item' ordinal='2' />
+              <column datatype='integer' name='sales' ordinal='3' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[customer_id]' value='[transactions].[customer_id]' />
+          <map key='[item]' value='[transaction_detail].[item]' />
+          <map key='[sales]' value='[transaction_detail].[sales]' />
+          <map key='[store (transaction!detail)]' value='[transaction_detail].[store]' />
+          <map key='[store]' value='[transactions].[store]' />
+          <map key='[trans_id (transaction!detail)]' value='[transaction_detail].[trans_id]' />
+          <map key='[trans_id]' value='[transactions].[trans_id]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[transactions]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>0</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:C6:no:A1:C6:0&quot;</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>6</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[transaction_detail]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>0</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:D7:no:A1:D7:0&quot;</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>6</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>store</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[store]</local-name>
+            <parent-name>[transactions]</parent-name>
+            <remote-alias>store</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RAU_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <object-id>[transactions_87CBD577A3FC4F90B5A7021CEDD972C4]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>trans_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[trans_id]</local-name>
+            <parent-name>[transactions]</parent-name>
+            <remote-alias>trans_id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <object-id>[transactions_87CBD577A3FC4F90B5A7021CEDD972C4]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>customer_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[customer_id]</local-name>
+            <parent-name>[transactions]</parent-name>
+            <remote-alias>customer_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <object-id>[transactions_87CBD577A3FC4F90B5A7021CEDD972C4]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>store</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[store (transaction!detail)]</local-name>
+            <parent-name>[transaction_detail]</parent-name>
+            <remote-alias>store</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RAU_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <object-id>[transactions_87CBD577A3FC4F90B5A7021CEDD972C4]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>trans_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[trans_id (transaction!detail)]</local-name>
+            <parent-name>[transaction_detail]</parent-name>
+            <remote-alias>trans_id</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <object-id>[transactions_87CBD577A3FC4F90B5A7021CEDD972C4]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>item</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[item]</local-name>
+            <parent-name>[transaction_detail]</parent-name>
+            <remote-alias>item</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RAU_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <object-id>[transactions_87CBD577A3FC4F90B5A7021CEDD972C4]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sales</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[sales]</local-name>
+            <parent-name>[transaction_detail]</parent-name>
+            <remote-alias>sales</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <object-id>[transactions_87CBD577A3FC4F90B5A7021CEDD972C4]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='transactions' datatype='table' name='[__tableau_internal_object_id__].[transactions_87CBD577A3FC4F90B5A7021CEDD972C4]' role='measure' type='quantitative' />
+      <column caption='Customer Id' datatype='integer' name='[customer_id]' role='dimension' type='ordinal' />
+      <column caption='Item' datatype='string' name='[item]' role='dimension' type='nominal' />
+      <column caption='Sales' datatype='integer' name='[sales]' role='measure' type='quantitative' />
+      <column caption='Store (Transaction!Detail)' datatype='string' name='[store (transaction!detail)]' role='dimension' type='nominal' />
+      <column caption='Store' datatype='string' name='[store]' role='dimension' type='nominal' />
+      <column caption='Trans Id (Transaction!Detail)' datatype='integer' name='[trans_id (transaction!detail)]' role='dimension' type='ordinal' />
+      <column caption='Trans Id' datatype='integer' name='[trans_id]' role='dimension' type='ordinal' />
+      <extract _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='C:/Users/ASUS/AppData/Local/Temp/TableauTemp/#TableauTemp_1bgoy681fq0cyb19wqgfe0jv9uek.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='08/19/2025 03:14:56 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <cols>
+            <map key='[customer_id]' value='[Extract].[customer_id]' />
+            <map key='[item]' value='[Extract].[item]' />
+            <map key='[sales]' value='[Extract].[sales]' />
+            <map key='[store (transaction!detail)]' value='[Extract].[store]' />
+            <map key='[store]' value='[Extract].[store1]' />
+            <map key='[trans_id (transaction!detail)]' value='[Extract].[trans_id]' />
+            <map key='[trans_id]' value='[Extract].[trans_id1]' />
+          </cols>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>store1</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[store]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>store1</remote-alias>
+              <ordinal>0</ordinal>
+              <family>transactions</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RAU_S2' />
+              <object-id>[transactions_87CBD577A3FC4F90B5A7021CEDD972C4]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>trans_id1</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[trans_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>trans_id1</remote-alias>
+              <ordinal>1</ordinal>
+              <family>transactions</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[transactions_87CBD577A3FC4F90B5A7021CEDD972C4]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>customer_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[customer_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>customer_id</remote-alias>
+              <ordinal>2</ordinal>
+              <family>transactions</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>5</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[transactions_87CBD577A3FC4F90B5A7021CEDD972C4]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>store</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[store (transaction!detail)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>store</remote-alias>
+              <ordinal>3</ordinal>
+              <family>transaction_detail</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RAU_S2' />
+              <object-id>[transactions_87CBD577A3FC4F90B5A7021CEDD972C4]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>trans_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[trans_id (transaction!detail)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>trans_id</remote-alias>
+              <ordinal>4</ordinal>
+              <family>transaction_detail</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[transactions_87CBD577A3FC4F90B5A7021CEDD972C4]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>item</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[item]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>item</remote-alias>
+              <ordinal>5</ordinal>
+              <family>transaction_detail</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RAU_S2' />
+              <object-id>[transactions_87CBD577A3FC4F90B5A7021CEDD972C4]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>sales</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[sales]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>sales</remote-alias>
+              <ordinal>6</ordinal>
+              <family>transaction_detail</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>5</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[transactions_87CBD577A3FC4F90B5A7021CEDD972C4]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Indonesia&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <object-graph>
+        <objects>
+          <object caption='transactions' id='transactions_87CBD577A3FC4F90B5A7021CEDD972C4'>
+            <properties context=''>
+              <relation join='inner' type='join'>
+                <clause type='join'>
+                  <expression op='AND'>
+                    <expression op='='>
+                      <expression op='[transactions].[trans_id]' />
+                      <expression op='[transaction_detail].[trans_id]' />
+                    </expression>
+                    <expression op='='>
+                      <expression op='[transactions].[store]' />
+                      <expression op='[transaction_detail].[store]' />
+                    </expression>
+                  </expression>
+                </clause>
+                <relation connection='excel-direct.1h2msel0uhy9jq17gavqr1oxfgfh' name='transactions' table='[transactions$]' type='table'>
+                  <columns gridOrigin='A1:C6:no:A1:C6:0' header='yes' outcome='6'>
+                    <column datatype='string' name='store' ordinal='0' />
+                    <column datatype='integer' name='trans_id' ordinal='1' />
+                    <column datatype='integer' name='customer_id' ordinal='2' />
+                  </columns>
+                </relation>
+                <relation connection='excel-direct.1h2msel0uhy9jq17gavqr1oxfgfh' name='transaction_detail' table='[transaction_detail$]' type='table'>
+                  <columns gridOrigin='A1:D7:no:A1:D7:0' header='yes' outcome='6'>
+                    <column datatype='string' name='store' ordinal='0' />
+                    <column datatype='integer' name='trans_id' ordinal='1' />
+                    <column datatype='string' name='item' ordinal='2' />
+                    <column datatype='integer' name='sales' ordinal='3' />
+                  </columns>
+                </relation>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='transactions+ (camera_store_sales)' name='federated.0f6pfvl1x5feee19vuynj1fx6oyf' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0f6pfvl1x5feee19vuynj1fx6oyf'>
+            <column-instance column='[store]' derivation='None' name='[none:store:nk]' pivot='key' type='nominal' />
+            <column caption='Sales' datatype='integer' name='[sales]' role='measure' type='quantitative' />
+            <column caption='Store' datatype='string' name='[store]' role='dimension' type='nominal' />
+            <column-instance column='[sales]' derivation='Sum' name='[sum:sales:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.0f6pfvl1x5feee19vuynj1fx6oyf].[sum:sales:qk]</rows>
+        <cols>[federated.0f6pfvl1x5feee19vuynj1fx6oyf].[none:store:nk]</cols>
+      </table>
+      <simple-id uuid='{2FF3F5E3-F69B-4876-AA02-9D1BEED9969A}' />
+    </worksheet>
+  </worksheets>
+  <windows saved-dpi-scale-factor='1.25' source-height='37'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0f6pfvl1x5feee19vuynj1fx6oyf].[none:store:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{570F7F11-BDA0-4112-B7B4-7508FDDD6DAA}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Sheet 1' width='192'>
+      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
+    </thumbnail>
+  </thumbnails>
+</workbook>

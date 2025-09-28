@@ -1,0 +1,55 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 450,
+  "projection": { "type": "equalEarth" },
+  "layer" : [
+    {
+        "data": {
+          "url": "provinces-simplified-topo.json",
+          "format": {
+            "type": "topojson",
+            "feature": "provinces"
+            }
+        },
+        "mark": {
+            "type": "geoshape",
+            "fill": "lightgray",
+            "stroke": "white"
+        }
+    },
+    {
+        "data": {
+            "url": "katalog_gempa.csv"
+        },
+        "transform": [
+            {
+                "filter": {
+                    "field": "tgl",
+                    "timeUnit": "yearmonthdate",
+                    "range": [1640995200000, 1672444800000]
+                }
+            }
+        ],
+        "mark": {
+            "type": "circle",
+            "opacity": 0.5,
+            "color": "red",
+            "tooltip": {"content": "data"}
+        },
+        "encoding": {
+            "longitude": {"field": "lon", "type": "quantitative"},
+            "latitude": {"field": "lat", "type": "quantitative"},
+            "size": {"field": "mag", "type": "quantitative", "scale": {"domain": [4, 8], "range": [10, 200]}},
+            "color": {"field": "depth", "type": "quantitative", "scale": {"scheme": "viridis"}},
+            "tooltip": [
+                {"field": "tgl", "type": "temporal", "title": "Date"},
+                {"field": "mag", "type": "quantitative", "title": "Magnitude"},
+                {"field": "depth", "type": "quantitative", "title": "Depth (km)"},
+                {"field": "lat", "type": "quantitative", "title": "Latitude"},
+                {"field": "lon", "type": "quantitative", "title": "Longitude"}
+            ]
+        }
+    }
+  ]
+}
